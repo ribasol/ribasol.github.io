@@ -82,11 +82,30 @@
             <textarea id="mensaje" name="mensaje" required></textarea>
 
             <button type="submit">Enviar</button>
+            <p id="mensaje-enviado" style="display:none; color: green;">¡Tu mensaje ha sido enviado con éxito!</p>
         </form>
     </section>
 
     <button id="ir-arriba">⬆️ Volver Arriba</button>
 
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Mostrar mensaje de confirmación
+            let mensaje = document.getElementById("mensaje-enviado");
+            mensaje.style.display = "block";
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(function() {
+                mensaje.style.display = "none";
+            }, 5000);
+            
+            // Limpiar el formulario después de enviarlo
+            this.reset();
+        });
+    </script>
+    
     <footer>
         <p>&copy; 2025 ODS 16 - Promoviendo la Paz y la Justicia.</p>
     </footer>
